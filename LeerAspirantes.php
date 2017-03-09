@@ -42,27 +42,44 @@ include "php/navbar.php";
             <br>
             <div class="col-md-12"> 
 
-                <select class="col-md-6 entradaTxt" name="Pais" data-placeholder="Seleccione país" tabindex="-1" aria-hidden="true" >
-                    <option value="" class="selected">Seleccione el País</option>
-                    <option value="España">España</option>
-                    <option value="Otro">Otro</option>
+                <p class="col-md-4">
+                    <label for="ID">ID del aspirante</label>
+                    <input type="text" size="" name="id" placeholder="Escriba el ID" >
+                </p>
+
+                <select class="col-md-4 entradaTxt" name="Clasificacion" data-placeholder="Seleccione país" tabindex="-1" aria-hidden="true" >
+                    <option value="" class="selected">Seleccione titulación</option>
+                        <option value="Graduado Escolar"                                        >Graduado escolar</option>
+                        <option value="Certificado de escolaridad o ESO"                  		>Certificado de escolaridad o ESO</option>
+                        <option value="BUP, Bachillerato, COU"                                  >BUP, Bachillerato, COU</option>
+                        <option value="Graduado en ESO"                                         >Graduado en ESO</option>
+                        <option value="FP1 / Técnico Medio"                                     >FP1 / Técnico Medio</option>
+                        <option value="FP2 / Técnico Superior"                                  >FP2 / Técnico Superior</option>
+                        <option value="Diplomatura, Ingeniería Técnica, Arquitectura Técnica"   >Diplomatura, Ingeniería Técnica, Arquitectura Técnica</option>
+                        <option value="Grado"                                                   >Grado</option>
+                        <option value="Licenciado. Ingeniero. Arquitecto"                       >Licenciado, ingeniero, arquitecto</option>
+                        <option value="Master / Título propio de Postgrado"                     >Master / Título propio de Postgrado</option>
+                        <option value="Doctorado"                                               >Doctorado</option>
+                        <option value="Otros cursos"                                            >Otros cursos</option>
+                        <option value="Sin especificar"                                         >Sin especificar</option>
                 </select>              
 
-                <select class="col-md-6" id="ms" name="CategoriasInteres" data-placeholder="Seleccione categoría de interés" tabindex="-1" aria-hidden="true" >
+                <select class="col-md-4" id="ms" name="CategoriasInteres" data-placeholder="Seleccione categoría de interés" tabindex="-1" aria-hidden="true" >
                     <option value="" >Selecciona Categoría de Interés</option>
-                        <option value="Adminstración"       >Adminstración</option>
-                        <option value="Comercial"           >Comercial</option>
-                        <option value="Calidad"             >Calidad</option>
-                        <option value="I+D+I"               >I+D+I</option>
-                        <option value="Recursos Humanos"    >Recursos Humanos</option>
-                        <option value="Área financiera"     >Área financiera</option>
+                        <option value="Adminstración"           >Adminstración</option>
+                        <option value="Comercial"               >Comercial</option>
+                        <option value="Calidad"                 >Calidad</option>
+                        <option value="I+D+I"                   >I+D+I</option>
+                        <option value="Recursos Humanos"        >Recursos Humanos</option>
+                        <option value="Área financiera"         >Área financiera</option>
+                        <option value="Área de Mantenimiento"   >Área de Mantenimiento</option> 
                 </select>
 
             </div>
 
             <br><br>
 
-            <div class="col-md-12">
+            <div align="center" class="col-md-12">
                     <input class="btn btn-default" type="submit" name="Buscar" value ="Buscar Registros">
                    
             </div>            
@@ -107,8 +124,8 @@ include "php/navbar.php";
         ####################################################################################################    
             
          if ($_POST[Buscar]) { 
-             
-            $consulta_mysql="select * from BDAltasCandi where CategoriasInteres like '%" .$_POST[CategoriasInteres]. "%' and Pais like '%" .$_POST[Pais]. "%'";
+         /* $consulta_mysql="select * from BDAltasCandi where CategoriasInteres like '%" .$_POST[CategoriasInteres]. "%' and Pais like '%" .$_POST[Pais]. "%'"; */ 
+            $consulta_mysql="select * from BDAltasCandi where CategoriasInteres like '%" .$_POST[CategoriasInteres]. "%' and Clasificacion like '%" .$_POST[Clasificacion]. "%' and id like '%" .$_POST[id]. "%'";
 
             $resultado_consulta_mysql=mysqli_query($link, $consulta_mysql);
             
@@ -123,7 +140,7 @@ include "php/navbar.php";
             <div class="col-md-2"> <?php echo $fila['Pais'];?> <br/> </div>
             <div class="col-md-2"> <?php echo $fila['Provincia'];?> <br/> </div>
             <div class="col-md-2"> <?php echo $fila['Municipio'];?> <br/> </div>
-            <div class="col-md-2"> <?php echo $fila['id'];?><a href="./VerRegistro.php?id=<?php echo $fila['id'];?>" > Ver perfil </a> <br/> </div>
+            <div class="col-md-2"> <?php echo $fila['id'];?> / <a href="./VerRegistro.php?id=<?php echo $fila['id'];?>" > Ver perfil </a> <br/> </div>
 
         </div>
 
