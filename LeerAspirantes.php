@@ -66,6 +66,7 @@ include "php/navbar.php";
 
                 <select class="col-md-4" id="ms" name="CategoriasInteres" data-placeholder="Seleccione categoría de interés" tabindex="-1" aria-hidden="true" >
                     <option value="" >Selecciona Categoría de Interés</option>
+                    	<option value="Producción"           	>Producción</option>
                         <option value="Adminstración"           >Adminstración</option>
                         <option value="Comercial"               >Comercial</option>
                         <option value="Calidad"                 >Calidad</option>
