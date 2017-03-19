@@ -36,19 +36,20 @@ include "php/navbar.php";
         <form action="" method="post">
 
             <div class="col-md-12">
-                <strong>Buscar por</strong>
+                <strong>Buscar por </strong> (si no se selecciona nada se listarán todos los registros) :
             </div>
+            <hr>
 
             <br>
             <div class="col-md-12"> 
 
                 <p class="col-md-4">
-                    <label for="ID">ID del aspirante</label>
-                    <input type="text" size="" name="id" placeholder="Escriba el ID" >
+                    <label for="ID">Número ID del aspirante</label>
+                    <input type="text" size="" name="id" placeholder="Escribe el ID" >
                 </p>
 
-                <select class="col-md-4 entradaTxt" name="Clasificacion" data-placeholder="Seleccione país" tabindex="-1" aria-hidden="true" >
-                    <option value="" class="selected">Seleccione titulación</option>
+                <select class="col-md-4" name="Clasificacion" data-placeholder="Seleccione país" tabindex="-1" aria-hidden="true" >
+                    <option value="" class="selected">Selecciona titulación</option>
                         <option value="Graduado Escolar"                                        >Graduado escolar</option>
                         <option value="Certificado de escolaridad o ESO"                  		>Certificado de escolaridad o ESO</option>
                         <option value="BUP, Bachillerato, COU"                                  >BUP, Bachillerato, COU</option>
@@ -63,6 +64,7 @@ include "php/navbar.php";
                         <option value="Otros cursos"                                            >Otros cursos</option>
                         <option value="Sin especificar"                                         >Sin especificar</option>
                 </select>              
+
 
                 <select class="col-md-4" id="ms" name="CategoriasInteres" data-placeholder="Seleccione categoría de interés" tabindex="-1" aria-hidden="true" >
                     <option value="" >Selecciona Categoría de Interés</option>
@@ -79,6 +81,8 @@ include "php/navbar.php";
             </div>
 
             <br><br>
+
+            <hr>
 
             <div align="center" class="col-md-12">
                     <input class="btn btn-default" type="submit" name="Buscar" value ="Buscar Registros">
@@ -121,13 +125,13 @@ include "php/navbar.php";
         $result = mysqli_query($link, "SELECT * FROM BDAltasCandi");
 
         ####################################################################################################
-        # Si ha pulsado el botón hacemos la búsqueda pedida
+        # Si ha pulsado el botón y hacgo la búsqueda pedida
         ####################################################################################################    
             
          if ($_POST[Buscar]) { 
             $consulta_mysql="select * from BDAltasCandi where CategoriasInteres like '%" .$_POST[CategoriasInteres]. "%' 
-                                and Clasificacion like '%" .$_POST[Clasificacion]. "%' or Clasificacion2 like '%" .$_POST[Clasificacion]. "%' 
-                                and id like '%" .$_POST[id]. "%'";
+            and (Clasificacion like '%" .$_POST[Clasificacion]. "%' or Clasificacion2 like '%" .$_POST[Clasificacion]. "%') 
+            and id like '%" .$_POST[id]. "%'";
 
             $resultado_consulta_mysql=mysqli_query($link, $consulta_mysql);
             
