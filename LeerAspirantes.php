@@ -125,8 +125,9 @@ include "php/navbar.php";
         ####################################################################################################    
             
          if ($_POST[Buscar]) { 
-         /* $consulta_mysql="select * from BDAltasCandi where CategoriasInteres like '%" .$_POST[CategoriasInteres]. "%' and Pais like '%" .$_POST[Pais]. "%'"; */ 
-            $consulta_mysql="select * from BDAltasCandi where CategoriasInteres like '%" .$_POST[CategoriasInteres]. "%' and Clasificacion like '%" .$_POST[Clasificacion]. "%' and id like '%" .$_POST[id]. "%'";
+            $consulta_mysql="select * from BDAltasCandi where CategoriasInteres like '%" .$_POST[CategoriasInteres]. "%' 
+                                and Clasificacion like '%" .$_POST[Clasificacion]. "%' or Clasificacion2 like '%" .$_POST[Clasificacion]. "%' 
+                                and id like '%" .$_POST[id]. "%'";
 
             $resultado_consulta_mysql=mysqli_query($link, $consulta_mysql);
             
