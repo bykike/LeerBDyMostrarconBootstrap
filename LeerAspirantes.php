@@ -153,7 +153,7 @@ include "php/navbar.php";
         <?php 
             }
 
-                    # Libero la memoria asociada a result y cierro base de datos
+                    # Libero la memoria asociada a resultado_consulta_mysql y cierro base de datos
                     mysqli_free_result($resultado_consulta_mysql);
 
                     # Desconectamos BD  
